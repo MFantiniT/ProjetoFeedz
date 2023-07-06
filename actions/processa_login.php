@@ -1,6 +1,6 @@
 <?php
  include_once('../conexaoDB.php');
- include_once('../helpers/url.php');
+
  
  session_start();
  $usuario = $_POST['email'];
