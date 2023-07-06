@@ -1,80 +1,100 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta1/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 100vh;
-            background: #f8f9fa;
-        }
-        .form-control:focus {
-            box-shadow: none;
-            border-color: #8657db;
-        }
-        .form-signin {
-            width: 100%;
-            max-width: 330px;
-            padding: 15px;
-            margin: auto;
-        }
-    </style>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-    
-    <main class="form-signin">
-        <form action="login.php" method="post">
-            <h1 class="h3 mb-3 fw-normal">Entre na sua conta</h1>
-
-            <div class="form-floating mb-3">
-                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="nome@exemplo.com" required>
-                <label for="floatingInput">Email</label>
-            </div>
-
-            <div class="form-floating mb-3">
-                <input type="password" name="senha" class="form-control" id="floatingPassword" placeholder="Senha" required>
-                <label for="floatingPassword">Senha</label>
-            </div>
-
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
-
-            <div class="mt-3">
-                <a href="#" data-bs-toggle="modal" data-bs-target="#esqueciModal">Esqueci minha senha</a> | 
-                <a href="#">Cadastrar-se</a>
-            </div>
-        </form>
-    </main>
-
-    <!-- Modal para "Esqueci minha senha" -->
-    <div class="modal fade" id="esqueciModal" tabindex="-1" role="dialog" aria-labelledby="esqueciModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="esqueciModalLabel">Esqueci minha senha</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Insira seu email para receber instruções de recuperação de senha.</p>
-                    <form action="recuperar_senha.php" method="post">
-                        <div class="form-floating mb-3">
-                            <input type="email" name="emailRecuperacao" class="form-control" id="emailRecuperacao" placeholder="nome@exemplo.com" required>
-                            <label for="emailRecuperacao">Email</label>
-                        </div>
-                        <button type="submit" class="w-100 btn btn-lg btn-primary">Enviar</button>
-                    </form>
+    <div class="container">
+        <div class="row justify-content-center align-items-center" style="height:100vh">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="process_login.php" method="post">
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="password" placeholder="Password">
+                            </div>
+                            <button type="submit" name="submit" class="btn btn-primary">Login</button>
+                            <div class="form-group">
+                                <a href="#" data-toggle="modal" data-target="#registerModal">Registrar-se</a>
+                                <a href="#" data-toggle="modal" data-target="#forgotPasswordModal" class="float-right">Esqueceu sua senha?</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- registro Modal -->
+<div class="modal" id="registerModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Registro</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="process_registration.php" method="post">
+                    <div class="form-group">
+                        <label for="registerNome">Nome</label>
+                        <input type="text" class="form-control" id="registerNome" name="nome" placeholder="Insira seu nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerSobrenome">Sobrenome</label>
+                        <input type="text" class="form-control" id="registerSobrenome" name="sobrenome" placeholder="Insira seu sobrenome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" class="form-control" id="registerEmail" name="email" placeholder="Insira seu email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Senha</label>
+                        <input type="password" class="form-control" id="registerPassword" name="senha" placeholder="Insira sua senha" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmpresa">Empresa</label>
+                        <input type="text" class="form-control" id="registerEmpresa" name="empresa" placeholder="Insira o nome da empresa">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                </form>
+            </div>
+        </div>
     </div>
+</div>
 
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+        <!-- Forgot Password Modal -->
+<div class="modal" id="forgotPasswordModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Esqueceu a Senha?</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form action="process_forgot_password.php" method="post">
+                    <div class="form-group">
+                        <label for="forgotEmail">Endereço de Email</label>
+                        <input type="email" class="form-control" id="forgotEmail" name="email" placeholder="Insira seu email" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Redefinir Senha</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Include jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
