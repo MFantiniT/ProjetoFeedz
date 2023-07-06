@@ -1,3 +1,12 @@
+<?php include_once('conexaoDB.php');
+  // verifica se o usuário está logado
+  session_start();
+  if (!isset($_SESSION['id_usuario'])) {
+  // o usuário não está logado, redireciona para a página de login
+  header("Location: ./login.php");
+  exit; // garante que o resto do script não será executado
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -30,6 +39,12 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav">
+                    <li class=nav-item>
+                        <a href="" class=nav-link>
+                             Olá <?= $_SESSION['nome_usuario']?>
+                        </a>
+                    </li>
+                    
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
                             Perfil
@@ -37,7 +52,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Editar</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Sair</a>
+                            <a class="dropdown-item" href="actions/logout.php">Sair</a>
                         </div>
                     </li>
                 </ul>

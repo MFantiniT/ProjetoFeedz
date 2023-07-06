@@ -1,3 +1,4 @@
+<?php include_once('functions.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,12 +16,13 @@
             <div class="col-4">
                 <div class="card">
                     <div class="card-body">
-                        <form action="process_login.php" method="post">
+                        <?php exibeMensagemSession(); ?>
+                        <form action="actions/processa_login.php" method="post">
                             <div class="form-group">
                                 <input type="email" class="form-control" name="email" placeholder="Email">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" name="password" placeholder="Password">
+                                <input type="password" class="form-control" name="senha" placeholder="Password">
                             </div>
                             <button type="submit" name="submit" class="btn btn-primary">Login</button>
                             <div class="form-group">
@@ -42,7 +44,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <form action="process_registration.php" method="post">
+                <form action="actions/cadastro.php" method="post">
                     <div class="form-group">
                         <label for="registerNome">Nome</label>
                         <input type="text" class="form-control" id="registerNome" name="nome" placeholder="Insira seu nome" required>
