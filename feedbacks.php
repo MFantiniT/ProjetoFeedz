@@ -2,40 +2,87 @@
     include_once('templates/header.php');
 ?>
 <!-- Conteúdo principal -->
-<div class="container">
+<div class="container mt-4">
     <div class="row">
-        <!-- Lista de feedbacks -->
         <div class="col-md-4">
-            <h2>Feedbacks recebidos</h2>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <a href="#">Feedback 1</a>
+            <!-- Botão de enviar feedback -->
+            <div class="mb-2">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#newFeedbackModal">Enviar feedback</button>
+            </div>
+            <!-- Abas de feedbacks -->
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#received">Recebidos</a>
                 </li>
-                <li class="list-group-item">
-                    <a href="#">Feedback 2</a>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#sent">Enviados</a>
                 </li>
-                <!-- Adicione mais itens de feedback conforme necessário -->
             </ul>
+            <!-- Conteúdo das abas -->
+            <div class="tab-content">
+                <!-- Feedbacks recebidos -->
+                <div class="tab-pane fade show active" id="received">
+                    <ul class="list-group mt-2">
+                        <li class="list-group-item">
+                            <a href="#">Feedback 1</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">Feedback 2</a>
+                        </li>
+                        <!-- Adicione mais itens de feedback conforme necessário -->
+                    </ul>
+                </div>
+                <!-- Feedbacks enviados -->
+                <div class="tab-pane fade" id="sent">
+                    <ul class="list-group mt-2">
+                        <li class="list-group-item">
+                            <a href="#">Feedback 1</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">Feedback 2</a>
+                        </li>
+                        <!-- Adicione mais itens de feedback conforme necessário -->
+                    </ul>
+                </div>
+            </div>
         </div>
         <!-- Feedback selecionado -->
         <div class="col-md-8">
             <h2>Feedback selecionado</h2>
             <div id="selected-feedback">
                 <!-- As informações do feedback selecionado serão exibidas aqui -->
+            </div>  
+            
+            <!-- Campo de resposta do feedback -->
+            <div id="response-field" class="mt-4">
+                <h3>Resposta</h3>
+                <textarea class="form-control" rows="3"></textarea>
+                <button class="btn btn-primary mt-2">Enviar resposta</button>
             </div>
+
         </div>
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-
+<!-- Modal para enviar um novo feedback -->
+<div class="modal fade" id="newFeedbackModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Enviar feedback</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulário para enviar feedback -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Enviar</button>
+            </div>
+        </div>
+    </div>
+</div>
 <?php
     include_once('templates/footer.php');
 ?>

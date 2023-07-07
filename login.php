@@ -22,7 +22,7 @@
                                 <input type="email" class="form-control" name="email" placeholder="Email">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" name="senha" placeholder="Password">
+                                <input type="password" class="form-control" name="senha" placeholder="senha">
                             </div>
                             <button type="submit" name="submit" class="btn btn-primary">Login</button>
                             <div class="form-group">
