@@ -4,7 +4,11 @@
  $id_usuario = $_SESSION['id_usuario'];
 
  // Pega o feedbacks do usuário
- $feedbacks_recebidos = feedbackRecebidos($conn, $id_usuario)->fetchAll();
+ $feedbacks_recebidos = feedbackRecebidos($conn, $id_usuario);
+ $feedbacks_enviados = feedbackEnviados($conn, $id_usuario);
+ if(isset($_GET['id_feedback'])){
+ $feedbacks_conteudo = conteudoFeedback($conn, $_GET['id_feedback']);
+ }
 ?>
 
 <!-- Conteúdo principal -->
@@ -31,13 +35,21 @@
                  <ul class="list-group mt-2">
                      <?php foreach ($feedbacks_recebidos as $feedback) : ?>
                          <li class="list-group-item">
-                             <a href="#"><?= $feedback['mensagem']; ?></a>
+                             <a href="?id_feedback=<?=$feedback['id']?>"><?= $feedback['nome_remetente']; ?></a>
                          </li>
                      <?php endforeach; ?>
                  </ul>
              </div>
              <!-- Feedbacks enviados -->
-
+             <div class="tab-pane fade" id="sent">
+                 <ul class="list-group mt-2">
+                     <?php foreach ($feedbacks_enviados as $feedback) : ?>
+                         <li class="list-group-item">
+                             <a href="#"><?= $feedback['mensagem']; ?></a>
+                         </li>
+                     <?php endforeach; ?>
+                 </ul>
+             </div>                   
          </div>
      </div>
      <!-- Feedback selecionado -->
@@ -45,6 +57,7 @@
          <h2>Feedback selecionado</h2>
          <div id="selected-feedback">
              <!-- As informações do feedback selecionado serão exibidas aqui -->
+             
          </div>  
          
          <!-- Campo de resposta do feedback -->

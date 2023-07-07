@@ -38,13 +38,39 @@
     }
 
     function feedbackRecebidos($conn, $id){
-        $sql = "SELECT * FROM feedback WHERE id_destinatario = :id";
+        $sql = "SELECT f.*, u.nome AS nome_remetente FROM feedback f
+                INNER JOIN usuarios u ON f.id_remetente = u.id_usuario
+                WHERE f.id_destinatario = :id";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(":id", $id);
         $stmt->execute();
-        return $stmt;
-
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
+    function feedbackEnviados($conn, $id){
+        $sql = "SELECT f.*, u.nome AS nome_destinatario FROM feedback f
+                INNER JOIN usuarios u ON f.id_destinatario = u.id_usuario
+                WHERE f.id_remetente = :id";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    function conteudoFeedback($conn, $id){
+        $sql="SELECT f.mensagem, 
+              CONCAT(u1.nome, ' ', u1.sobrenome) AS remetente, 
+              CONCAT(u2.nome, ' ', u2.sobrenome) AS destinatario
+              FROM feedback f
+              INNER JOIN usuarios u1 ON f.id_remetente = u1.id_usuario
+              INNER JOIN usuarios u2 ON f.id_destinatario = u2.id_usuario
+              WHERE f.id = :id";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    
 
 
 ?>
