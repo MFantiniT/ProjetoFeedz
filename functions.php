@@ -38,7 +38,7 @@
     }
 
     function feedbackRecebidos($conn, $id){
-        $sql = "SELECT f.*, u.nome AS nome_remetente FROM feedback f
+        $sql = "SELECT f.*, u.id_usuario AS id_remetente, u.nome AS nome_remetente FROM feedback f
                 INNER JOIN usuarios u ON f.id_remetente = u.id_usuario
                 WHERE f.id_destinatario = :id";
         $stmt = $conn->prepare($sql);
@@ -48,7 +48,7 @@
     }
     
     function feedbackEnviados($conn, $id){
-        $sql = "SELECT f.*, u.nome AS nome_destinatario FROM feedback f
+        $sql = "SELECT f.*, u.id_usuario AS id_destinatario, u.nome AS nome_destinatario FROM feedback f
                 INNER JOIN usuarios u ON f.id_destinatario = u.id_usuario
                 WHERE f.id_remetente = :id";
         $stmt = $conn->prepare($sql);
@@ -58,7 +58,7 @@
     }
     
     function conteudoFeedback($conn, $id){
-        $sql="SELECT f.mensagem, CONCAT(u1.nome, ' ', u1.sobrenome) AS remetente, CONCAT(u2.nome, ' ', u2.sobrenome) AS destinatario, f.created_at as data
+        $sql="SELECT f.mensagem, u1.id_usuario AS id_remetente, CONCAT(u1.nome, ' ', u1.sobrenome) AS remetente, u2.id_usuario AS id_destinatario, CONCAT(u2.nome, ' ', u2.sobrenome) AS destinatario, f.created_at as data
         FROM feedback f
         INNER JOIN usuarios u1 ON f.id_remetente = u1.id_usuario
         INNER JOIN usuarios u2 ON f.id_destinatario = u2.id_usuario
@@ -68,7 +68,7 @@
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    
+
     function formataDate($datafeedback){ 
         $data = DateTime::createFromFormat('Y-m-d H:i:s', $datafeedback);
         $data_formatada = $data->format('d/m/Y H:i:s');

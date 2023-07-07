@@ -7,9 +7,15 @@
  $feedbacks_recebidos = feedbackRecebidos($conn, $id_usuario);
  $feedbacks_enviados = feedbackEnviados($conn, $id_usuario);
  if(isset($_GET['id_feedback'])){
- $feedbacks_conteudo = conteudoFeedback($conn, $_GET['id_feedback']);
- $data = formataDate($feedbacks_conteudo['data']);
- }
+    $feedbacks_conteudo = conteudoFeedback($conn, $_GET['id_feedback']);
+    // verificação de segurança
+    if($id_usuario == $feedbacks_conteudo['id_destinatario'] || $id_usuario == $feedbacks_conteudo['id_remetente']) {
+        $data = formataDate($feedbacks_conteudo['data']);
+        // Resto do código
+    } else {
+        die("Você não tem permissão para ver este feedback.");
+    }
+}
 ?>
 
 <!-- Conteúdo principal -->
