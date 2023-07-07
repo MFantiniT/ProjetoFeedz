@@ -60,7 +60,7 @@
                 <h2>Feedback selecionado</h2>
                 <div id="selected-feedback" class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Feedback de <?=$feedbacks_conteudo['remetente']?></h4>
+                        <h4 class="card-title"><?=$feedbacks_conteudo['remetente']?> -> <?=$feedbacks_conteudo['destinatario'] ?></h4>
                     </div>
                     <div class="card-body">
                         <p class="card-text"><?=$feedbacks_conteudo['mensagem']?></p>
@@ -69,14 +69,14 @@
                         <?=$data?>
                     </div>
                 </div>             
+                <!-- Campo de resposta do feedback -->
+                <div id="response-field" class="mt-4">
+                    <h3>Resposta</h3>
+                    <textarea class="form-control" rows="3"></textarea>
+                    <button class="btn btn-primary mt-2">Enviar resposta</button>
+                </div>
             </div>  
         <?php endif; ?>
-         <!-- Campo de resposta do feedback -->
-         <div id="response-field" class="mt-4">
-             <h3>Resposta</h3>
-             <textarea class="form-control" rows="3"></textarea>
-             <button class="btn btn-primary mt-2">Enviar resposta</button>
-         </div>
 
      </div>
  </div>
