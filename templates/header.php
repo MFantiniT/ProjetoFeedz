@@ -1,4 +1,5 @@
 <?php include_once('conexaoDB.php');
+    include_once('functions.php');
   // verifica se o usuário está logado
   session_start();
   if (!isset($_SESSION['id_usuario'])) {

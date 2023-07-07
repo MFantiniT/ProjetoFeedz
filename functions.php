@@ -33,4 +33,18 @@
         }
     }
 
+    function enviarFeedback($conn){
+
+    }
+
+    function feedbackRecebidos($conn, $id){
+        $sql = "SELECT * FROM feedback WHERE id_destinatario = :id";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        return $stmt;
+
+    }
+
+
 ?>
