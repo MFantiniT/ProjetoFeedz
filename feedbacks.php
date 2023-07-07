@@ -8,6 +8,7 @@
  $feedbacks_enviados = feedbackEnviados($conn, $id_usuario);
  if(isset($_GET['id_feedback'])){
  $feedbacks_conteudo = conteudoFeedback($conn, $_GET['id_feedback']);
+ $data = formataDate($feedbacks_conteudo['data']);
  }
 ?>
 
@@ -45,21 +46,31 @@
                  <ul class="list-group mt-2">
                      <?php foreach ($feedbacks_enviados as $feedback) : ?>
                          <li class="list-group-item">
-                             <a href="#"><?= $feedback['mensagem']; ?></a>
+                             <a href="?id_feedback=<?=$feedback['id']?>"><?= $feedback['nome_destinatario']; ?></a>
                          </li>
                      <?php endforeach; ?>
                  </ul>
              </div>                   
          </div>
      </div>
-     <!-- Feedback selecionado -->
-     <div class="col-md-8">
-         <h2>Feedback selecionado</h2>
-         <div id="selected-feedback">
-             <!-- As informações do feedback selecionado serão exibidas aqui -->
-             
-         </div>  
-         
+                        
+            <!-- Feedback selecionado -->
+        <?php if(isset($feedbacks_conteudo['remetente'])&& isset($feedbacks_conteudo['mensagem'])&& isset($data)): ?>                
+            <div class="col-md-8">
+                <h2>Feedback selecionado</h2>
+                <div id="selected-feedback" class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Feedback de <?=$feedbacks_conteudo['remetente']?></h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text"><?=$feedbacks_conteudo['mensagem']?></p>
+                    </div>
+                    <div class="card-footer">
+                        <?=$data?>
+                    </div>
+                </div>             
+            </div>  
+        <?php endif; ?>
          <!-- Campo de resposta do feedback -->
          <div id="response-field" class="mt-4">
              <h3>Resposta</h3>
