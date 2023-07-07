@@ -72,7 +72,7 @@
     </div>
 </div>
 
-        <!-- Forgot Password Modal -->
+        <!-- PErdi minha senha Modal -->
 <div class="modal" id="forgotPasswordModal">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -95,7 +95,7 @@
     </div>
 </div>
 
-    <!-- Include jQuery and Bootstrap JS -->
+    <!-- jQuery e Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
