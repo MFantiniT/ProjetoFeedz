@@ -20,7 +20,7 @@ $enviados = countEnviados($conn, $_SESSION['id_usuario']);
             <a href="#">
                 <div class="card-body">
                     <h5 class="card-title">Feedbacks enviados</h5>
-                    <p class="card-text"><?=$recebidos?></p>
+                    <p class="card-text"><?=$enviados?></p>
                 </div>
             </a>
         </div>
