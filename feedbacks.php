@@ -11,7 +11,6 @@
     // verificação de segurança
     if($id_usuario == $feedbacks_conteudo['id_destinatario'] || $id_usuario == $feedbacks_conteudo['id_remetente']) {
         $data = formataDate($feedbacks_conteudo['data']);
-        // Resto do código
     } else {
         die("Você não tem permissão para ver este feedback.");
     }
