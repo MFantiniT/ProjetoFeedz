@@ -1,13 +1,13 @@
 <?php
  include_once('../conexaoDB.php');
  
-
+ 
+ session_start();
  $nome = $_POST['nome'];
  $sobrenome = $_POST['sobrenome'];
  $email = $_POST['email'];
  $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
  $empresa = $_POST['empresa'];
- session_start();
  try {   
     $sql = "INSERT INTO usuarios(nome, sobrenome, email, senha_hash, empresa) VALUES (:nome, :sobrenome, :email, :senha, :empresa)";
     $stmt = $conn->prepare($sql);
@@ -23,7 +23,7 @@
     if ($e->errorInfo[1] == 1062){
         $_SESSION['mensagem']= "Este email já esta cadastrado";
         
-        header("Location: ../cadastrar.php");
+        header("Location: ../login.php");
         exit();
     } else {
         echo "Erro: " . $e->getMessage();

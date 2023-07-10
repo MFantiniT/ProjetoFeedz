@@ -74,6 +74,22 @@
         $data_formatada = $data->format('d/m/Y H:i:s');
         return $data_formatada;
     }
+    function countRecebidos($conn, $id_usuario){
+        $sql = "SELECT COUNT(*) as count FROM feedback WHERE id_remetente = :id_remetente";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(":id_remetente", $id_usuario);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['count'];
+    }
+    function countEnviados($conn, $id_usuario){
+        $sql = "SELECT COUNT(*) as count FROM feedback WHERE id_destinatario = :id_destinatario";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(":id_destinatario", $id_usuario);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['count'];
+    }
     
     
 

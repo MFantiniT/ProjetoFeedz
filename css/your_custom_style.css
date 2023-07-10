@@ -21,3 +21,11 @@ body {
     z-index: 1000;
     width: 100%;
 }
+.card1-adjust{
+    margin-top: 100px;
+    margin-left: 50px; 
+}
+.card-adjust{
+    margin-top: 100px;
+    margin-left: 20px; 
+}

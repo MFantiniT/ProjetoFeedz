@@ -3,9 +3,9 @@
   // verifica se o usuário está logado
   session_start();
   if (!isset($_SESSION['id_usuario'])) {
-  // o usuário não está logado, redireciona para a página de login
+  // se o usuário não estiver logado ele volta para a tela de login
   header("Location: ./login.php");
-  exit; // garante que o resto do script não será executado
+  exit; // garante que o resto do código não sera executado
 }
 ?>
 <!DOCTYPE html>
@@ -15,12 +15,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>FeedCycle</title>
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <!-- Font Awesome -->
+    <!-- Font -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/your_custom_stylesheet.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/your_custom_style.css">
 </head>
 <body>
     <!-- Navbar -->
