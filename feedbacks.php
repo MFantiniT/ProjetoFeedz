@@ -100,7 +100,7 @@
             </div>
             <div class="modal-body">
                 <!-- Formulário para enviar feedback -->
-                <form action="enviaFeedback.php" method="POST">
+                <form action="actions/enviaFeedback.php" method="POST">
                     <input type="hidden" name="id_remetente" value="<?= $_SESSION['id_usuario'] ?>">
 
                     <div class="form-group">
@@ -125,11 +125,11 @@
                         <label for="mensagem">Feedback:</label>
                         <textarea class="form-control" id="mensagem" name="mensagem" rows="3"></textarea>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-primary">Enviar Feedback</button>
+                    </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-primary">Enviar Feedback</button>
             </div>
         </div>
     </div>

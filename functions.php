@@ -43,6 +43,7 @@
             $stmt->bindParam(":mensagem", $mensagem);
             $stmt->bindParam(":status", $status);
             $stmt->bindParam(":tipo_feedback", $tipo_feedback);
+            $stmt->execute();
             $_SESSION['mensagem'] = "Feedback enviado com sucesso!!";
             header("location: ../feedbacks.php");
         } catch(PDOException $e){
