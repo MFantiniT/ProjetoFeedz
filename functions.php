@@ -33,8 +33,22 @@
         }
     }
 
-    function enviarFeedback($conn){
-
+    function enviarFeedback($conn, $id_remetente, $id_destinatario, $mensagem, $status, $tipo_feedback){
+        try{
+            session_start();
+            $sql = "INSERT INTO feedback(id_remetente, id_destinatario, mensagem, status, tipo_feedback) VALUES (:id_remetente, :id_destinatario, :mensagem, :status, :tipo_feedback)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":id_remetente", $id_remetente);
+            $stmt->bindParam(":id_destinatario", $id_destinatario);
+            $stmt->bindParam(":mensagem", $mensagem);
+            $stmt->bindParam(":status", $status);
+            $stmt->bindParam(":tipo_feedback", $tipo_feedback);
+            $_SESSION['mensagem'] = "Feedback enviado com sucesso!!";
+            header("location: ../feedbacks.php");
+        } catch(PDOException $e){
+            error_log("Erro: ". $e->getMessage());
+            echo "ocorreu um erro ao enviar o feedback";
+        }
     }
 
     function feedbackRecebidos($conn, $id){
@@ -74,22 +88,42 @@
         $data_formatada = $data->format('d/m/Y H:i:s');
         return $data_formatada;
     }
-    function countRecebidos($conn, $id_usuario){
-        $sql = "SELECT COUNT(*) as count FROM feedback WHERE id_remetente = :id_remetente";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(":id_remetente", $id_usuario);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result['count'];
+    function countRecebidos($conn, $id_destinatario){
+        try {
+            $sql = "SELECT COUNT(*) as count FROM feedback WHERE id_destinatario = :id_destinatario";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":id_destinatario", $id_destinatario);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result['count'];
+        } catch(PDOException $e) {
+            error_log("Erro ao contar feedbacks recebidos: " . $e->getMessage());
+            
+            return false;
+        }
     }
-    function countEnviados($conn, $id_usuario){
-        $sql = "SELECT COUNT(*) as count FROM feedback WHERE id_destinatario = :id_destinatario";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(":id_destinatario", $id_usuario);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result['count'];
+
+    function countEnviados($conn, $id_remetente){
+        try {
+            $sql = "SELECT COUNT(*) as count FROM feedback WHERE id_remetente = :id_remetente";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":id_remetente", $id_remetente);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result['count'];
+        } catch(PDOException $e) {
+            error_log("Erro ao contar feedbacks enviados: " . $e->getMessage());
+            
+            return false;
+        }
     }
+    function getUsuarios($conn){
+        $sql = "SELECT * FROM usuarios";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
     
     
 

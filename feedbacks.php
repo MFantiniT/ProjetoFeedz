@@ -2,7 +2,8 @@
     include_once('templates/header.php');
  // Pega o ID do usuário logado
  $id_usuario = $_SESSION['id_usuario'];
-
+ //Pega os usuários que existem para poder selecionar um destinatário
+ $usuarios = getUsuarios($conn);
  // Pega o feedbacks do usuário
  $feedbacks_recebidos = feedbackRecebidos($conn, $id_usuario);
  $feedbacks_enviados = feedbackEnviados($conn, $id_usuario);
@@ -99,13 +100,41 @@
             </div>
             <div class="modal-body">
                 <!-- Formulário para enviar feedback -->
+                <form action="enviaFeedback.php" method="POST">
+                    <input type="hidden" name="id_remetente" value="<?= $_SESSION['id_usuario'] ?>">
+
+                    <div class="form-group">
+                        <label for="id_destinatario">Para:</label>
+                        <select class="form-control" id="id_destinatario" name="id_destinatario">
+                            <?php foreach ($usuarios as $usuario): ?>
+                                <option value="<?= $usuario['id_usuario'] ?>"><?= $usuario['nome'] ?> <?=$usuario['sobrenome']?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tipo">Tipo de Feedback:</label>
+                        <select class="form-control" id="tipo" name="tipo_feedback">
+                            <option value="Neutro">neutro</option>
+                            <option value="Positivo">positivo</option>
+                            <option value="Construtivo">construtivo</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensagem">Feedback:</label>
+                        <textarea class="form-control" id="mensagem" name="mensagem" rows="3"></textarea>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Enviar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-primary">Enviar Feedback</button>
             </div>
         </div>
     </div>
 </div>
+
 <?php
     include_once('templates/footer.php');
 ?>

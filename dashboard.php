@@ -7,7 +7,7 @@ $enviados = countEnviados($conn, $_SESSION['id_usuario']);
 <div class="row">
     <div class="col-md-4">
         <div class="card mb-4 shadow-sm card1-adjust">
-            <a href="#">
+            <a href="feedbacks.php">
                 <div class="card-body">
                     <h5 class="card-title">FeedBacks recebidos</h5>
                     <p class="card-text"><?=$recebidos?></p>
@@ -17,7 +17,7 @@ $enviados = countEnviados($conn, $_SESSION['id_usuario']);
     </div>
     <div class="col-md-4">
         <div class="card mb-4 shadow-sm card-adjust">
-            <a href="#">
+            <a href="feedbacks.php">
                 <div class="card-body">
                     <h5 class="card-title">Feedbacks enviados</h5>
                     <p class="card-text"><?=$enviados?></p>
