@@ -3,7 +3,8 @@ $(document).ready(function() {
     $('#response-field').hide();
 
     // Mostra o campo de resposta quando um item de feedback é clicado
-    $('.list-group-item').click(function() {
+    $('.list-group-item').click(function(event) {
+        event.stopPropagation();
         $('#response-field').show();
     });
 });
