@@ -17,7 +17,7 @@ session_start(); ?>
             <div class="col-4">
                 <div class="card">
                     <div class="card-body">
-                        <?php exibeMensagemSession(); ?>
+                        <?php exibeMenssagemSession(); ?>
                         <form action="actions/processa_login.php" method="post">
                             <div class="form-group">
                                 <input type="email" class="form-control" name="email" placeholder="Email">

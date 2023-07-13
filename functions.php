@@ -102,6 +102,30 @@
     function trocaSenha($conn, $senha_antiga, $senha_nova){
         
     }
+
+    function exibeRespostas($conn, $id_feedback){
+        try {
+            $sql = "SELECT * respostas WHERE id_feedback=:id_feedback";
+        } catch (PDOException $e) {
+            error_log("Erro: ". $e->getMessage());
+            echo "ocorreu um erro";
+        }
+    }
+
+    function RespostaFeedback($conn, $id_feedback, $id_usuario, $mensagem, $status){
+        session_start();
+        try {
+            $sql = "INSERT INTO respostas(id_feedback, id_usuario, mensagem, status) VALUES (:id_feedback, :id_usuario, :mensagem, :status)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":id_feedback", $id_feedback);
+            $stmt->bindParam(":id_usuario", $id_usuario);
+            $stmt->bindParam(":mensagem", $mensagem);
+            $stmt->bindParam(":status", $status);
+        } catch (PDOException $e) {
+            error_log("Erro: ". $e->getMessage());
+            echo "ocorreu um erro ao responder o feedback";
+        }
+    }
     
     
     
