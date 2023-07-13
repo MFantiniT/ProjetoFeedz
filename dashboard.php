@@ -2,8 +2,9 @@
 include_once('templates/header.php');
 $recebidos = countRecebidos($conn, $_SESSION['id_usuario']);
 $enviados = countEnviados($conn, $_SESSION['id_usuario']);
-?>
 
+?>
+<?= exibeMenssagemSession();?>
 <div class="row">
     <div class="col-md-4">
         <div class="card mb-4 shadow-sm card1-adjust">

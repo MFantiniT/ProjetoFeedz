@@ -17,7 +17,7 @@
     }
 }
 ?>
-<?=exibeMensagemSession(); ?>
+<?=exibeMenssagemSession(); ?>
 <!-- Conteúdo principal -->
 <div class="container mt-4">
  <div class="row">
@@ -41,9 +41,11 @@
              <div class="tab-pane fade show active" id="received">
                  <ul class="list-group mt-2">
                      <?php foreach ($feedbacks_recebidos as $feedback) : ?>
-                         <li class="list-group-item">
-                             <a href="?id_feedback=<?=$feedback['id']?>"><?= $feedback['nome_remetente']; ?></a>
-                         </li>
+                        <a href="?id_feedback=<?=$feedback['id']?>"> 
+                            <li class="list-group-item">
+                                <?= $feedback['nome_remetente']; ?>
+                            </li>
+                        </a>
                      <?php endforeach; ?>
                  </ul>
              </div>
@@ -62,26 +64,29 @@
                         
             <!-- Feedback selecionado -->
         <?php if(isset($feedbacks_conteudo['remetente'])&& isset($feedbacks_conteudo['mensagem'])&& isset($data)): ?>                
-            <div class="col-md-8">
-                <h2>Feedback selecionado</h2>
-                <div id="selected-feedback" class="card">
-                    <div class="card-header">
-                        <h4 class="card-title"><?=$feedbacks_conteudo['remetente']?> -> <?=$feedbacks_conteudo['destinatario'] ?></h4>
+            <?php if(isset($_GET['id_feedback'])): ?>                
+                <div class="col-md-8">
+                    <h2>Feedback selecionado</h2>
+                    <div id="selected-feedback" class="card">
+                        <div class="card-header">
+                            <h4 class="card-title"><?=$feedbacks_conteudo['remetente']?> -> <?=$feedbacks_conteudo['destinatario'] ?></h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text"><?=$feedbacks_conteudo['mensagem']?></p>
+                        </div>
+                        <div class="card-footer">
+                            <?=$data?>
+                        </div>
+                    </div>             
+                    <!-- Campo de resposta do feedback -->
+                    <div id="response-field" class="mt-4">
+                        <h3>Resposta</h3>
+                        <textarea class="form-control" rows="3"></textarea>
+                        <button class="btn btn-primary mt-2">Enviar resposta</button>
                     </div>
-                    <div class="card-body">
-                        <p class="card-text"><?=$feedbacks_conteudo['mensagem']?></p>
-                    </div>
-                    <div class="card-footer">
-                        <?=$data?>
-                    </div>
-                </div>             
-                <!-- Campo de resposta do feedback -->
-                <div id="response-field" class="mt-4">
-                    <h3>Resposta</h3>
-                    <textarea class="form-control" rows="3"></textarea>
-                    <button class="btn btn-primary mt-2">Enviar resposta</button>
-                </div>
-            </div>  
+                </div>  
+            <?php endif; ?>
+
         <?php endif; ?>
 
      </div>
