@@ -108,7 +108,6 @@
             return $result['count'];
         } catch(PDOException $e) {
             error_log("Erro ao contar feedbacks recebidos: " . $e->getMessage());
-            
             return false;
         }
     }
@@ -123,8 +122,8 @@
             return $result['count'];
         } catch(PDOException $e) {
             error_log("Erro ao contar feedbacks enviados: " . $e->getMessage());
-            
             return false;
         }
     }
     ?>
+            
