@@ -7,6 +7,10 @@
  // Pega o feedbacks do usuário
  $feedbacks_recebidos = feedbackRecebidos($conn, $id_usuario);
  $feedbacks_enviados = feedbackEnviados($conn, $id_usuario);
+ //respostas do feedback
+ if(isset($_GET['id_feedback'])) {
+    $respostas = exibeRespostas($conn, $_GET['id_feedback']);
+}
  if(isset($_GET['id_feedback'])){
     $feedbacks_conteudo = conteudoFeedback($conn, $_GET['id_feedback']);
     // verificação de segurança
@@ -77,7 +81,17 @@
                         <div class="card-footer">
                             <?=$data?>
                         </div>
-                    </div>             
+                    </div>
+                    <!-- Código para exibir respostas -->
+                    <?php if(isset($respostas)): ?>
+                        <?php foreach ($respostas as $resposta): ?>
+                            <div class="response mt-4">
+                                <h4><?= $resposta['nome'] ?></h4>
+                                <p><?= $resposta['mensagem'] ?></p>
+                                <small><?= $resposta['data'] ?></small>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>             
                     <!-- Campo de resposta do feedback -->
                     <div id="response-field" class="mt-4">
                         <h3>Resposta</h3>

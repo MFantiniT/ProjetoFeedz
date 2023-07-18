@@ -74,14 +74,22 @@
     }
     function exibeRespostas($conn, $id_feedback){
         try {
-            $sql = "SELECT * respostas WHERE id_feedback=:id_feedback";
+            $sql = "SELECT respostas.*, usuarios.nome
+                    FROM respostas 
+                    JOIN usuarios ON respostas.id_usuario = usuarios.id_usuario 
+                    WHERE respostas.id_feedback=:id_feedback";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id_feedback', $id_feedback);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             error_log("Erro: ". $e->getMessage());
-            echo "ocorreu um erro";
+            echo "<p style='text-align: center;'> ocorreu um erro ao exibir as respostas</p>";
         }
     }
+    
     //formata a data do feedback para o formato padrão.
-    function formataDate($datafeedback){ 
+    function formataDate($datafeedback){
         $data = DateTime::createFromFormat('Y-m-d H:i:s', $datafeedback);
         $data_formatada = $data->format('d/m/Y H:i:s');
         return $data_formatada;
