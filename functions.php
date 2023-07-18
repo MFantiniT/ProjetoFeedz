@@ -7,7 +7,7 @@
         }
     }
 
-
+    // funçoes feedback's
     function enviarFeedback($conn, $id_remetente, $id_destinatario, $mensagem, $status, $tipo_feedback){
         try{
             session_start();
@@ -58,12 +58,46 @@
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-
+    function RespostaFeedback($conn, $id_feedback, $id_usuario, $mensagem, $status){
+        session_start();
+        try {
+            $sql = "INSERT INTO respostas(id_feedback, id_usuario, mensagem, status) VALUES (:id_feedback, :id_usuario, :mensagem, :status)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":id_feedback", $id_feedback);
+            $stmt->bindParam(":id_usuario", $id_usuario);
+            $stmt->bindParam(":mensagem", $mensagem);
+            $stmt->bindParam(":status", $status);
+        } catch (PDOException $e) {
+            error_log("Erro: ". $e->getMessage());
+            echo "ocorreu um erro ao responder o feedback";
+        }
+    }
+    function exibeRespostas($conn, $id_feedback){
+        try {
+            $sql = "SELECT * respostas WHERE id_feedback=:id_feedback";
+        } catch (PDOException $e) {
+            error_log("Erro: ". $e->getMessage());
+            echo "ocorreu um erro";
+        }
+    }
+    //formata a data do feedback para o formato padrão.
     function formataDate($datafeedback){ 
         $data = DateTime::createFromFormat('Y-m-d H:i:s', $datafeedback);
         $data_formatada = $data->format('d/m/Y H:i:s');
         return $data_formatada;
     }
+    //exibe a lista de funcionários para selecionar a quem enviar o feedback. 
+    function getUsuarios($conn){
+        $sql = "SELECT * FROM usuarios";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    function trocaSenha($conn, $senha_antiga, $senha_nova){
+        
+    }
+
+    //funções Dashboard
     function countRecebidos($conn, $id_destinatario){
         try {
             $sql = "SELECT COUNT(*) as count FROM feedback WHERE id_destinatario = :id_destinatario";
@@ -93,42 +127,4 @@
             return false;
         }
     }
-    function getUsuarios($conn){
-        $sql = "SELECT * FROM usuarios";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-    function trocaSenha($conn, $senha_antiga, $senha_nova){
-        
-    }
-
-    function exibeRespostas($conn, $id_feedback){
-        try {
-            $sql = "SELECT * respostas WHERE id_feedback=:id_feedback";
-        } catch (PDOException $e) {
-            error_log("Erro: ". $e->getMessage());
-            echo "ocorreu um erro";
-        }
-    }
-
-    function RespostaFeedback($conn, $id_feedback, $id_usuario, $mensagem, $status){
-        session_start();
-        try {
-            $sql = "INSERT INTO respostas(id_feedback, id_usuario, mensagem, status) VALUES (:id_feedback, :id_usuario, :mensagem, :status)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(":id_feedback", $id_feedback);
-            $stmt->bindParam(":id_usuario", $id_usuario);
-            $stmt->bindParam(":mensagem", $mensagem);
-            $stmt->bindParam(":status", $status);
-        } catch (PDOException $e) {
-            error_log("Erro: ". $e->getMessage());
-            echo "ocorreu um erro ao responder o feedback";
-        }
-    }
-    
-    
-    
-
-
-?>
+    ?>
