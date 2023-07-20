@@ -88,7 +88,7 @@
                             <div class="response mt-4">
                                 <h4><?= $resposta['nome'] ?></h4>
                                 <p><?= $resposta['mensagem'] ?></p>
-                                <small><?= $resposta['data'] ?></small>
+                                <small><?=formataDate($resposta['data']) ?></small>
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>             
@@ -130,15 +130,6 @@
                             <?php foreach ($usuarios as $usuario): ?>
                                 <option value="<?= $usuario['id_usuario'] ?>"><?= $usuario['nome'] ?> <?=$usuario['sobrenome']?></option>
                             <?php endforeach; ?>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="tipo">Tipo de Feedback:</label>
-                        <select class="form-control" id="tipo" name="tipo_feedback">
-                            <option value="Neutro">neutro</option>
-                            <option value="Positivo">positivo</option>
-                            <option value="Construtivo">construtivo</option>
                         </select>
                     </div>
 
