@@ -68,6 +68,8 @@
             $stmt->bindParam(":mensagem", $mensagem);
             $stmt->bindParam(":status", $status);
             $stmt->execute();
+            $_SESSION['mensagem']="Resposta enviada com sucesso!!";
+            
         } catch (PDOException $e) {
             error_log("Erro: ". $e->getMessage());
             echo "ocorreu um erro ao responder o feedback";

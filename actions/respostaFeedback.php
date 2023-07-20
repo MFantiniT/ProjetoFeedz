@@ -1,8 +1,10 @@
-<?php include_once('../functions.php');
+<?php 
+include_once('../functions.php');
 include_once('../conexaoDB.php');
-
-
-
+session_start();
+$id_feedback = $_GET['id_feedback'];
+RespostaFeedback($conn, $_GET['id_feedback'], $_SESSION['id_usuario'], $_POST['mensagem'], 0);
+header("location: ../feedbacks.php?id_feedback=$id_feedback");
 
 
 

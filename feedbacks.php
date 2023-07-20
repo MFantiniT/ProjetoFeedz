@@ -83,7 +83,7 @@
                         </div>
                     </div>
                     <!-- Código para exibir respostas -->
-                    <?php if(isset($respostas)): ?>
+                    <?php if(!empty($respostas)): ?>
                         <?php foreach ($respostas as $resposta): ?>
                             <div class="response mt-4">
                                 <h4><?= $resposta['nome'] ?></h4>
@@ -95,8 +95,8 @@
                     <!-- Campo de resposta do feedback -->
                     <div id="response-field" class="mt-4">
                         <h3>Resposta</h3>
-                        <form action="respostaFeedback.php" method="post">
-                            <textarea class="form-control" rows="3"></textarea>
+                        <form action="actions/respostaFeedback.php?id_feedback=<?=$_GET['id_feedback']?>" method="post">
+                            <textarea class="form-control" rows="3" name="mensagem"></textarea>
                             <button class="btn btn-primary mt-2">Enviar resposta</button>
                         </form>
                     </div>
