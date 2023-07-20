@@ -67,6 +67,7 @@
             $stmt->bindParam(":id_usuario", $id_usuario);
             $stmt->bindParam(":mensagem", $mensagem);
             $stmt->bindParam(":status", $status);
+            $stmt->execute();
         } catch (PDOException $e) {
             error_log("Erro: ". $e->getMessage());
             echo "ocorreu um erro ao responder o feedback";

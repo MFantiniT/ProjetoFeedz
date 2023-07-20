@@ -95,8 +95,10 @@
                     <!-- Campo de resposta do feedback -->
                     <div id="response-field" class="mt-4">
                         <h3>Resposta</h3>
-                        <textarea class="form-control" rows="3"></textarea>
-                        <button class="btn btn-primary mt-2">Enviar resposta</button>
+                        <form action="respostaFeedback.php" method="post">
+                            <textarea class="form-control" rows="3"></textarea>
+                            <button class="btn btn-primary mt-2">Enviar resposta</button>
+                        </form>
                     </div>
                 </div>  
             <?php endif; ?>

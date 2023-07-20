@@ -38,6 +38,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="feedbacks.php">Feedbacks</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="onboarding.php">Onboarding</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav">
                     <li class=nav-item>
