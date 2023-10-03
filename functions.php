@@ -104,8 +104,22 @@
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    function trocaSenha($conn, $senha_antiga, $senha_nova){
-        
+    function trocaSenha($conn, $id_usuario, $senha_antiga, $senha_nova){
+        $sql = "SELECT senha_hash FROM usuarios WHERE id_usuario = :id_usuario";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(":id_usuario", $id_usuario);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if(password_verify($senha_antiga, $result['senha_hash'])){
+            $sql = "UPDATE usuarios SET senha_hash = :senha_nova WHERE id_usuario = :id_usuario";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":senha_nova", $senha_nova);
+            $stmt->bindParam(":id_usuario", $id_usuario);
+            $stmt->execute();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     //funções Dashboard
