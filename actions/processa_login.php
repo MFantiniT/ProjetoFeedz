@@ -20,6 +20,9 @@
     $_SESSION['mensagem']= "Olá ".$result['nome']." você está logado!!";
     $_SESSION['id_usuario'] = $result['id_usuario']; // 
     $_SESSION['nome_usuario'] = $result['nome'];
+    $_SESSION['sobrenome_usuario'] = $result['sobrenome'];
+    $_SESSION['email_usuario'] = $result['email'];
+    
 
     header("Location: ../dashboard.php");
 
