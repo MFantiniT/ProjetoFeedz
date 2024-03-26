@@ -59,6 +59,11 @@
                             <a class="dropdown-item" href="actions/logout.php">Sair</a>
                         </div>
                     </li>
+                    <li>
+                        <div id="imgperfil">
+                            <img src="img/perfil.png" alt="Logo" style="width:40px; height:40px; border-radius: 50%;">
+                        </div>
+                    </li>    
                 </ul>
             </div>
         </div>
