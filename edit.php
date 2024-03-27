@@ -8,7 +8,7 @@
         <div class="col-12">
             <h1>Editar perfil</h1>
             <form action="actions/editUser.php" method="POST">
-                <input type="hidden" name="id_usuario" value="<?= $id_usuario ?>">
+                <input type="hidden" name="id_usuario" value="<?= $_SESSION['id_usuario'] ?>">
                 <div class="form-group row">
                     <label for="nome" class="col-sm-2 col-form-label">Nome</label>
                     <div class="col-sm-10">
