@@ -153,18 +153,20 @@
 
     //editar users
 
-    function editUser($conn, $id_usuario, $nome, $sobrenome, $email){
-        $sql = "UPDATE usuarios SET nome = :nome, sobrenome = :sobrenome, email = :email WHERE id_usuario = :id_usuario";
+    function editUser($conn, $id_usuario, $nome, $sobrenome, $email, $img){
+        $sql = "UPDATE usuarios SET nome = :nome, sobrenome = :sobrenome, email = :email, img = :img WHERE id_usuario = :id_usuario";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(":nome", $nome);
         $stmt->bindParam(":sobrenome", $sobrenome);
         $stmt->bindParam(":email", $email);
         $stmt->bindParam(":id_usuario", $id_usuario);
+        $stmt->bindParam(":img", $img);
         $stmt->execute();
         session_start();
         $_SESSION['nome_usuario'] = $nome;
         $_SESSION['sobrenome_usuario'] = $sobrenome;
         $_SESSION['email_usuario'] = $email;
+        $_SESSION['img']= $img;
         $_SESSION['mensagem'] = "Usuário editado com sucesso!!";   
         header("location: ../dashboard.php");
     }

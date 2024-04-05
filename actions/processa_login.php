@@ -22,7 +22,7 @@
     $_SESSION['nome_usuario'] = $result['nome'];
     $_SESSION['sobrenome_usuario'] = $result['sobrenome'];
     $_SESSION['email_usuario'] = $result['email'];
-    
+    $_SESSION['img_perfil'] = $result['img'];    
 
     header("Location: ../dashboard.php");
 

@@ -1,4 +1,5 @@
-<?php include_once('conexaoDB.php');
+<?php 
+    include_once('conexaoDB.php');
     include_once('functions.php');
   // verifica se o usuário está logado
   session_start();
@@ -61,7 +62,7 @@
                     </li>
                     <li>
                         <div id="imgperfil">
-                            <img src="img/perfil.png" alt="Logo" style="width:40px; height:40px; border-radius: 50%;">
+                            <img src="img/<?= $_SESSION['img_perfil']?>" alt="Logo" style="width:40px; height:40px; border-radius: 50%;">
                         </div>
                     </li>    
                 </ul>
