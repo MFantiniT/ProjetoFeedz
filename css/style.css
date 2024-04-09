@@ -1,20 +1,6 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background: #007bff !important;
-}
-
-.card {
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-.container {
-    height: 100%;
-    align-content: center;
-}
-
-form {
-    padding: 10px;
+#img_feedback{
+    width:40px;
+    height:40px;
+    border-radius: 50%;
+    margin-right: 10px;
 }

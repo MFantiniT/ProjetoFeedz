@@ -28,9 +28,10 @@
     }
 
     function feedbackRecebidos($conn, $id){
-        $sql = "SELECT f.*, u.id_usuario AS id_remetente, u.nome AS nome_remetente FROM feedback f
-                INNER JOIN usuarios u ON f.id_remetente = u.id_usuario
-                WHERE f.id_destinatario = :id";
+        $sql = "SELECT f.*, u.id_usuario AS id_remetente, u.nome AS nome_remetente, u.img AS img_remetente
+        FROM feedback f
+        INNER JOIN usuarios u ON f.id_remetente = u.id_usuario
+        WHERE f.id_destinatario = :id";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(":id", $id);
         $stmt->execute();
