@@ -95,7 +95,7 @@
         //formata a data do feedback para o formato padrão.
         function formataDate($datafeedback){
             $data = DateTime::createFromFormat('Y-m-d H:i:s', $datafeedback);
-            $data_formatada = $data->format('d/m/Y H:i:s');
+            $data_formatada = $data->format('d/m/Y H:i');
             return $data_formatada;
         }
         //exibe a lista de funcionários para selecionar a quem enviar o feedback. 
