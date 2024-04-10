@@ -1,6 +1,26 @@
+body{
+    background-color: rgb(223, 248, 248);
+}
 #img_feedback{
     width:40px;
     height:40px;
     border-radius: 50%;
     margin-right: 10px;
+    
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+#logo-login{
+    width: 300px;
+    height: 300px;
+    align-items: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+header{
+    background-color: rgb(223, 248, 248);
 }

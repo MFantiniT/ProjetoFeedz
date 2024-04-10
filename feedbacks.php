@@ -59,7 +59,8 @@
                         <ul class="list-group mt-2">
                             <?php foreach ($feedbacks_enviados as $feedback) : ?>
                                 <li class="list-group-item">
-                                    <a href="?id_feedback=<?= $feedback['id'] ?>"><?= $feedback['nome_destinatario']; ?></a>
+                                    <a href="?id_feedback=<?= $feedback['id'] ?>">
+                                    <img src="img/<?= $feedback['img_destinatario']?>" id="img_feedback"><?= $feedback['nome_destinatario']; ?></a>
                                 </li>
                             <?php endforeach; ?>
                         </ul>
@@ -97,7 +98,7 @@
                         <div id="response-field" class="mt-4">
                             <h3>Resposta</h3>
                             <form action="actions/respostaFeedback.php?id_feedback=<?= $_GET['id_feedback'] ?>" method="post">
-                                <textarea class="form-control" rows="3" name="mensagem"></textarea>
+                                <textarea class="form-control" rows="3" name="mensagem" required></textarea>
                                 <button class="btn btn-primary mt-2">Enviar resposta</button>
                             </form>
                         </div>
@@ -136,7 +137,7 @@
 
                         <div class="form-group">
                             <label for="mensagem">Feedback:</label>
-                            <textarea class="form-control" id="mensagem" name="mensagem" rows="3"></textarea>
+                            <textarea class="form-control" id="mensagem" name="mensagem" rows="3" required></textarea>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>

@@ -19,6 +19,7 @@
             <div class="col-4">
                 <div class="card">
                     <div class="card-body">
+                        <img src="img/logo.jpg" alt="logo feedcycle" id="logo-login">
                         <?php exibeMenssagemSession(); ?>
                         <form action="actions/processa_login.php" method="post">
                             <div class="form-group">
