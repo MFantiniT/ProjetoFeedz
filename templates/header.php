@@ -23,6 +23,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/your_custom_style.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
     <!-- Navbar -->
@@ -45,6 +47,7 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav">
+                    <li class=nav-link><i class="fa fa-bell"></i></li>
                     <li class=nav-item>
                         <a href="" class=nav-link>
                              Olá <?= $_SESSION['nome_usuario']?>

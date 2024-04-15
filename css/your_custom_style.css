@@ -1,19 +1,25 @@
+/* Reset básico de elementos */
+html,
+body,
+ul,
+ol,
+li,
+p {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+/* Define uma fonte para o corpo do documento */
 body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f7f7f7;
+    color: #444;
     display: flex;
     flex-direction: column;
-    font-family: 'Poppins', sans-serif;
-    background: #fafafa;
 }
 
-.content-wrap {
-    flex: 1 0 auto;
-}
-
-.footer {
-    margin-top: auto;
-}
-
+/* Navbar fixo no topo da página */
 .navbar {
     margin-bottom: 0;
     top: 0;
@@ -21,22 +27,183 @@ body {
     z-index: 1000;
     width: 100%;
 }
-.card1-adjust{
-    margin-top: 100px;
-    margin-left: 50px; 
+
+/* Conteúdo principal e envolve */
+.content-wrap {
+    flex: 1 0 auto;
 }
-.card-adjust{
-    margin-top: 100px;
-    margin-left: 0px; 
+
+/* Ajustes de margem para o rodapé */
+.footer {
+    margin-top: auto;
 }
-#response-field{
+
+/* Estilos para botões */
+button,
+.btn-primary,
+.btn-secondary {
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #5cb85c;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Estilos para cartões */
+.card,
+.card1-adjust,
+.card-adjust {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background: #eee;
+    padding: 15px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-footer {
+    background: #fafafa;
+    padding: 10px 20px;
+    font-size: 14px;
+    text-align: right;
+    border-top: 1px solid #eee;
+}
+
+/* Estilos para as respostas */
+.response {
+    background-color: rgb(255, 255, 255);
+    border-left: 3px solid #5cb85c;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 1px;
+    font-size: 14px;
+}
+
+.response h4 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.response small {
+    color: #888;
+}
+
+/* Ajustes para o layout de listas */
+.list-group {
+    list-style-type: none;
+}
+
+.list-group-item {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    background: #fff;
+    margin-bottom: -1px;
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.list-group-item:last-child {
+    margin-bottom: 0;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+/* Ajustes no layout responsivo */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .col-md-4,
+    .col-md-8 {
+        width: 100%;
+    }
+}
+
+/* Misc */
+.nav-link {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid transparent;
+    border-bottom: none;
+    margin-right: -1px;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    text-decoration: none;
+}
+
+.nav-link.active {
+    background: #fff;
+    border-color: #ddd #ddd #fff;
+}
+
+.nav-item {
+    margin-bottom: -1px;
+}
+
+/* Formulário de resposta */
+#response-field {
     margin-bottom: 70px;
 }
-footer {
-    position: static;
-    bottom: 0;
+
+#response-field textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    resize: vertical;
+    /* Permite ao usuário ajustar a altura do textarea */
 }
-.response{
-    background-color: rgb(218, 218, 237);
-    border-radius: 1px;
+
+#response-field textarea:focus {
+    outline: none;
+    border-color: #5cb85c;
+}
+
+/* Ajustes específicos de margem */
+.card1-adjust {
+    margin-top: 100px;
+    margin-left: 50px;
+}
+
+.card-adjust {
+    margin-top: 100px;
+}
+
+/* Estilização do rodapé */
+.footer {
+    background: #fafafa;
+    padding: 10px 20px;
+    font-size: 14px;
+    text-align: center;
 }
