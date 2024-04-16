@@ -171,5 +171,17 @@
             $_SESSION['mensagem'] = "Usuário editado com sucesso!!";   
             header("location: ../dashboard.php");
         }
+
+        function exibeNotificacao($conn, $id_destinatario) {
+            $sql = "SELECT f.*, u.nome, u.sobrenome 
+                    FROM feedback AS f
+                    INNER JOIN usuarios AS u ON f.id_remetente = u.id_usuario
+                    WHERE f.id_destinatario = :id_destinatario";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id_destinatario', $id_destinatario, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        
         ?>
                 
