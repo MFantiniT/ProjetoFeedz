@@ -46,7 +46,7 @@
                     <div class="tab-pane fade show active" id="received">
                         <ul class="list-group mt-2">
                             <?php foreach ($feedbacks_recebidos as $feedback) : ?>
-                                <a href="?id_feedback=<?= $feedback['id'] ?>">
+                                <a href="actions/statusFeedback.php?id_feedback=<?= $feedback['id'] ?>">
                                     <li class="list-group-item">
                                     <img src="img/<?= $feedback['img_remetente']?>" id="img_feedback"><?= $feedback['nome_remetente']; ?>
                                     </li>
