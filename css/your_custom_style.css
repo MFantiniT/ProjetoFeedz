@@ -207,3 +207,22 @@ button,
     font-size: 14px;
     text-align: center;
 }
+/* Estilo do ícone de notificação */
+.nav-link .fa-bell {
+    position: relative;
+    font-size: 1.25em; /* Ajuste o tamanho do ícone conforme necessário */
+}
+
+/* Estilo do badge de notificação */
+.badge {
+    position: absolute;
+    top: -7px; 
+    right: -4px; 
+    width: 20px; 
+    height: 20px; 
+    border-radius: 50%; 
+    font-size: 0.75em; 
+    line-height: 20px; 
+    text-align: center; 
+    padding: 0;
+}

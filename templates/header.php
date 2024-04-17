@@ -5,6 +5,7 @@ include_once('functions.php');
 // verifica se o usuário está logado
 session_start();
 $notifications = exibeNotificacao($conn, $_SESSION['id_usuario']);
+$countNotifications = countNotifications($conn, $_SESSION['id_usuario']);
 if (!isset($_SESSION['id_usuario'])) {
     // se o usuário não estiver logado ele volta para a tela de login
     header("Location: ./login.php");
@@ -54,19 +55,21 @@ if (!isset($_SESSION['id_usuario'])) {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
                             <i class="fa fa-bell"></i>
+                            <?php if ($countNotifications > 0) : ?>
+                                <span class="badge badge-danger"><?= $countNotifications ?></span>
+                            <?php endif; ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <?php foreach($notifications as $notification):?>
-                                <?php if($notification['status']==0): ?>
-                            <a class="dropdown-item" href="actions/statusfeedback.php?id_feedback=<?=$notification['id'] ?>">Novo feedback de <?=$notification['nome']." ".$notification['sobrenome'] ?></a>
-                            <?php endif; ?>
-                            <!-- <div class="dropdown-divider"></div> -->
+                            <?php foreach ($notifications as $notification) : ?>
+                                <?php if ($notification['status'] == 0) : ?>
+                                    <a class="dropdown-item" href="actions/statusfeedback.php?id_feedback=<?= $notification['id'] ?>">Novo feedback de <?= htmlspecialchars($notification['nome']) . " " . htmlspecialchars($notification['sobrenome']) ?></a>
+                                <?php endif; ?>
                             <?php endforeach; ?>
                         </div>
                     </li>
-                    <li class=nav-item>
-                        <a href="" class=nav-link>
-                            Olá <?= $_SESSION['nome_usuario'] ?>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            Olá <?= htmlspecialchars($_SESSION['nome_usuario']) ?>
                         </a>
                     </li>
 
