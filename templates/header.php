@@ -1,16 +1,7 @@
 <?php
 include_once('conexaoDB.php');
 include_once('functions.php');
-//verifica as notificações
-// verifica se o usuário está logado
-session_start();
-$notifications = exibeNotificacao($conn, $_SESSION['id_usuario']);
-$countNotifications = countNotifications($conn, $_SESSION['id_usuario']);
-if (!isset($_SESSION['id_usuario'])) {
-    // se o usuário não estiver logado ele volta para a tela de login
-    header("Location: ./login.php");
-    exit; // garante que o resto do código não sera executado
-}
+include_once('auth.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

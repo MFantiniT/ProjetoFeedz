@@ -1,4 +1,5 @@
     <?php
+
     function exibeMenssagemSession()
     {
         // session_start();
@@ -212,7 +213,6 @@
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['total'];
     }
-
 
     ?>
                 
