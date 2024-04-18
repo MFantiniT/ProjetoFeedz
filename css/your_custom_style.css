@@ -228,11 +228,11 @@ button,
     padding: 0;
 }
 .list-group-item-unread {
-    background-color: #e9ecef; /* Cor de fundo para itens não lidos */
+    background-color: #e9ecef;
 }
 
 .list-group-item-read {
-    background-color: #f8f9fa; /* Cor de fundo para itens lidos */
+    background-color: #f8f9fa;
 }
 .datacard{
     position: absolute;
