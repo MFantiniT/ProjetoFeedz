@@ -47,7 +47,7 @@
                             <?php foreach ($feedbacks_recebidos as $feedback) : ?>
                                 <a href="actions/statusFeedback.php?id_feedback=<?= $feedback['id'] ?>">
                                     <li class="list-group-item <?= $feedback['status'] == 0 ? 'list-group-item-unread' : 'list-group-item-read' ?>">
-                                        <img src="img/<?= $feedback['img_remetente'] ?>" id="img_feedback"><?= htmlspecialchars($feedback['nome_remetente']); ?><small class="datacard"><?= formataDateCard($feedback['data'])?></small>
+                                        <img src="img/<?= $feedback['img_remetente'] ?>" id="img_feedback"><?= htmlspecialchars($feedback['nome_remetente']); ?><small class="datacard"><?= formataDateCard($feedback['data']) ?></small>
                                     </li>
                                 </a>
                             <?php endforeach; ?>
@@ -59,7 +59,7 @@
                             <?php foreach ($feedbacks_enviados as $feedback) : ?>
                                 <li class="list-group-item">
                                     <a href="?id_feedback=<?= $feedback['id'] ?>">
-                                        <img src="img/<?= $feedback['img_destinatario'] ?>" id="img_feedback"><?= $feedback['nome_destinatario']; ?><small class="datacard"><?= formataDateCard($feedback['data'])?></small></a>
+                                        <img src="img/<?= $feedback['img_destinatario'] ?>" id="img_feedback"><?= $feedback['nome_destinatario']; ?><small class="datacard"><?= formataDateCard($feedback['data']) ?></small></a>
                                 </li>
                             <?php endforeach; ?>
                         </ul>
@@ -74,7 +74,7 @@
                         <h2>Feedback selecionado</h2>
                         <div id="selected-feedback" class="card">
                             <div class="card-header">
-                                <h4 class="card-title"><?= $feedbacks_conteudo['remetente'] ?> -> <?= $feedbacks_conteudo['destinatario'] ?></h4>
+                                <h4 class="card-title"><?= $feedbacks_conteudo['remetente'] ?> <i class="fa fa-arrow-right" id='seta' aria-hidden="true"></i> <?= $feedbacks_conteudo['destinatario'] ?></h4>
                             </div>
                             <div class="card-body">
                                 <p class="card-text"><?= $feedbacks_conteudo['mensagem'] ?></p>
