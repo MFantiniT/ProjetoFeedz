@@ -107,6 +107,7 @@ button,
 
 .response small {
     color: #888;
+    
 }
 
 /* Ajustes para o layout de listas */
@@ -226,3 +227,19 @@ button,
     text-align: center; 
     padding: 0;
 }
+.list-group-item-unread {
+    background-color: #e9ecef; /* Cor de fundo para itens não lidos */
+}
+
+.list-group-item-read {
+    background-color: #f8f9fa; /* Cor de fundo para itens lidos */
+}
+.datacard{
+    position: absolute;
+    top: 20px; 
+    right: 100px; 
+    width: 10px; 
+    height: 10px; 
+    font-size: 12px;
+}
+

@@ -68,7 +68,7 @@ if (!isset($_SESSION['id_usuario'])) {
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">
+                        <a href="edit.php" class="nav-link">
                             Olá <?= htmlspecialchars($_SESSION['nome_usuario']) ?>
                         </a>
                     </li>

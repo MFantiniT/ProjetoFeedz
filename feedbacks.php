@@ -19,7 +19,6 @@
         } else {
             die("Você não tem permissão para ver este feedback.");
         }
-        
     }
     ?>
     <?= exibeMenssagemSession(); ?>
@@ -47,8 +46,8 @@
                         <ul class="list-group mt-2">
                             <?php foreach ($feedbacks_recebidos as $feedback) : ?>
                                 <a href="actions/statusFeedback.php?id_feedback=<?= $feedback['id'] ?>">
-                                    <li class="list-group-item">
-                                    <img src="img/<?= $feedback['img_remetente']?>" id="img_feedback"><?= $feedback['nome_remetente']; ?>
+                                    <li class="list-group-item <?= $feedback['status'] == 0 ? 'list-group-item-unread' : 'list-group-item-read' ?>">
+                                        <img src="img/<?= $feedback['img_remetente'] ?>" id="img_feedback"><?= htmlspecialchars($feedback['nome_remetente']); ?><small class="datacard"><?= formataDateCard($feedback['data'])?></small>
                                     </li>
                                 </a>
                             <?php endforeach; ?>
@@ -60,7 +59,7 @@
                             <?php foreach ($feedbacks_enviados as $feedback) : ?>
                                 <li class="list-group-item">
                                     <a href="?id_feedback=<?= $feedback['id'] ?>">
-                                    <img src="img/<?= $feedback['img_destinatario']?>" id="img_feedback"><?= $feedback['nome_destinatario']; ?></a>
+                                        <img src="img/<?= $feedback['img_destinatario'] ?>" id="img_feedback"><?= $feedback['nome_destinatario']; ?><small class="datacard"><?= formataDateCard($feedback['data'])?></small></a>
                                 </li>
                             <?php endforeach; ?>
                         </ul>

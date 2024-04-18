@@ -34,7 +34,8 @@
         $sql = "SELECT f.*, u.id_usuario AS id_remetente, u.nome AS nome_remetente, u.img AS img_remetente
             FROM feedback f
             INNER JOIN usuarios u ON f.id_remetente = u.id_usuario
-            WHERE f.id_destinatario = :id";
+            WHERE f.id_destinatario = :id
+            ORDER BY created_at DESC";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(":id", $id);
         $stmt->execute();
@@ -45,7 +46,8 @@
     {
         $sql = "SELECT f.*, u.id_usuario AS id_destinatario, u.nome AS nome_destinatario, u.img AS img_destinatario FROM feedback f
                     INNER JOIN usuarios u ON f.id_destinatario = u.id_usuario
-                    WHERE f.id_remetente = :id";
+                    WHERE f.id_remetente = :id
+                    ORDER BY created_at DESC";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(":id", $id);
         $stmt->execute();
@@ -103,6 +105,12 @@
     {
         $data = DateTime::createFromFormat('Y-m-d H:i:s', $datafeedback);
         $data_formatada = $data->format('d/m/Y H:i');
+        return $data_formatada;
+    }
+    function formataDateCard($datafeedback)
+    {
+        $data = DateTime::createFromFormat('Y-m-d H:i:s', $datafeedback);
+        $data_formatada = $data->format('d/m/Y');
         return $data_formatada;
     }
     //exibe a lista de funcionários para selecionar a quem enviar o feedback. 
