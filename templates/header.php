@@ -76,7 +76,7 @@ include_once('auth.php');
                     </li>
                     <li>
                         <div id="imgperfil">
-                            <img src="img/<?= $_SESSION['img_perfil'] ?>" alt="Logo" style="width:40px; height:40px; border-radius: 50%;">
+                            <img src="img/<?= htmlspecialchars($_SESSION['img_perfil']) ?>" alt="Logo" style="width:40px; height:40px; border-radius: 50%;">
                         </div>
                     </li>
                 </ul>
